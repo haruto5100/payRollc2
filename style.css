@@ -19,6 +19,11 @@ body {
     overflow-x: hidden;
     padding: 20px;
     box-sizing: border-box;
+    /* 新規追加: 中央寄せを強化するため、flexboxを使用 */
+    display: flex;
+    justify-content: center; /* 横方向の中央寄せ */
+    align-items: flex-start; /* 縦方向は上から配置（スクロール可能にするため） */
+    min-height: 100vh; /* 少なくともビューポートの高さにする */
 }
 
 body::before {
@@ -48,13 +53,17 @@ body::before {
     padding: 40px;
     box-shadow: 0 0 30px rgba(0, 230, 118, 0.3), 0 0 60px rgba(0, 176, 255, 0.2);
     max-width: 600px;
-    width: 90%;
-    margin: 0 auto;
+    /* width: 90%; を変更または削除 */
+    width: calc(100% - 40px); /* 左右のpadding分を考慮し、100%から引く */
+    /* あるいは、シンプルに max-width のみで制御する場合は width: auto; も可 */
+    margin: 0; /* bodyのflexboxで中央寄せするため、不要になる */
     text-align: center;
     position: relative;
     z-index: 1;
     min-height: auto;
 }
+
+/* その他のCSSは変更なし */
 
 .header {
     margin-bottom: 30px;
