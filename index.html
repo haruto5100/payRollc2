@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantumPay v3.1</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">payRoll <span class="version">ver2.0</span></h1>
+            <p class="tagline">給与計算システム</p>
+        </header>
+
+        <section class="settings-panel">
+            <h3 class="panel-title">
+                <i class="fas fa-cogs"></i> レート設定
+            </h3>
+            <div class="input-grid">
+                <div class="form-group">
+                    <label for="komaRate" class="input-label">コマ給 <span class="unit">(円)</span></label>
+                    <input type="number" id="komaRate" value="1800" class="futuristic-input" data-label="Koma Rate">
+                </div>
+                <div class="form-group">
+                    <label for="procraRate" class="input-label">プロクラ給 <span class="unit">(円)</span></label>
+                    <input type="number" id="procraRate" value="1232" class="futuristic-input" data-label="Procra Rate">
+                </div>
+                <div class="form-group">
+                    <label for="dailyAllowanceRate" class="input-label">出勤手当 <span class="unit">(円/日)</span></label>
+                    <input type="number" id="dailyAllowanceRate" value="440" class="futuristic-input" data-label="Daily Allowance">
+                </div>
+                <div class="form-group">
+                    <label for="adminAllowanceRate" class="input-label">事務時給 <span class="unit">(円)</span></label>
+                    <input type="number" id="adminAllowanceRate" value="1055" class="futuristic-input" data-label="Admin Rate">
+                </div>
+            </div>
+        </section>
+
+        <section class="data-panel">
+            <h3 class="panel-title">
+                <i class="fas fa-chart-line"></i> 勤務データ入力
+            </h3>
+            <div class="input-grid">
+                <div class="form-group">
+                    <label for="koma" class="input-label">コマ数</label>
+                    <input type="number" id="koma" placeholder="例: 10" class="futuristic-input" data-label="Koma Count">
+                </div>
+                <div class="form-group">
+                    <label for="procra" class="input-label">プロクラコマ数</label>
+                    <input type="number" id="procra" placeholder="例: 3" class="futuristic-input" data-label="Procra Count">
+                </div>
+                <div class="form-group">
+                    <label for="dailyAllowance" class="input-label">出勤日数 <span class="unit">(授業)</span></label>
+                    <input type="number" id="dailyAllowance" placeholder="例: 10" class="futuristic-input" data-label="Work Days">
+                </div>
+                <div class="form-group">
+                    <label for="adminAllowance" class="input-label">事務労働時間</label>
+                    <input type="number" id="adminAllowance" placeholder="例: 2" class="futuristic-input" data-label="Admin Hours">
+                </div>
+            </div>
+        </section>
+
+        <button id="calculate" class="futuristic-button">
+            <i class="fas fa-calculator"></i> 計算実行
+        </button>
+
+        <div class="result-display">
+            <span class="result-label">合計給与:</span>
+            <span id="result" class="result-value">--- 円</span>
+        </div>
+    </div>
+    <script src="payRoll.js"></script>
+</body>
+</html>

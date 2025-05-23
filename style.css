@@ -1,0 +1,261 @@
+:root {
+    --primary-color: #00e676; /* ネオングリーン */
+    --secondary-color: #00b0ff; /* ネオンブルー */
+    --background-dark: #1a1a2e;
+    --background-light: #2c2c4d;
+    --text-color-light: #e0e0e0;
+    --border-color: #4a4a6e;
+    --glow-color: #00ff8c;
+    --font-futuristic: 'Orbitron', sans-serif;
+}
+
+body {
+    font-family: var(--font-futuristic);
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, var(--background-dark), var(--background-light));
+    color: var(--text-color-light);
+    position: relative;
+    overflow-x: hidden;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0, 230, 118, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+    animation: pulseGlow 15s infinite alternate;
+    z-index: -1;
+}
+
+@keyframes pulseGlow {
+    0% { transform: scale(1); opacity: 0.1; }
+    50% { transform: scale(1.1); opacity: 0.2; }
+    100% { transform: scale(1); opacity: 0.1; }
+}
+
+.container {
+    background-color: rgba(30, 30, 60, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 0 30px rgba(0, 230, 118, 0.3), 0 0 60px rgba(0, 176, 255, 0.2);
+    max-width: 600px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    min-height: auto;
+}
+
+.header {
+    margin-bottom: 30px;
+}
+
+.title {
+    font-size: 2.8em;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+    letter-spacing: 2px;
+}
+
+.version {
+    font-size: 0.5em;
+    vertical-align: super;
+    color: var(--secondary-color);
+    text-shadow: none;
+}
+
+.tagline {
+    font-size: 1.1em;
+    color: var(--text-color-light);
+    opacity: 0.8;
+}
+
+.panel-title {
+    font-size: 1.6em;
+    color: var(--secondary-color);
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(0, 176, 255, 0.3);
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 0 0 8px rgba(0, 176, 255, 0.5);
+}
+
+.panel-title i {
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+.input-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 常に1列表示 */
+    gap: 25px; /* 各フォームグループ間の縦方向のスペース */
+    margin-bottom: 30px;
+}
+
+.form-group {
+    text-align: center; /* ラベルと入力フィールドを中央寄せにする */
+    position: relative;
+    display: flex; /* Flexboxを使ってラベルと入力フィールドを配置 */
+    flex-direction: column; /* 縦方向に並べる */
+    align-items: center; /* 中央に揃える */
+}
+
+.input-label {
+    display: block;
+    margin-bottom: 8px; /* ラベルと入力フィールドの間のスペース */
+    font-size: 0.9em;
+    color: var(--text-color-light);
+    opacity: 0.7;
+    position: relative;
+    padding-left: 0; /* 左寄せの点を削除するため0に */
+    text-align: center; /* ラベル自体も中央寄せ */
+}
+
+/* ラベルの左側の小さな点線を削除する場合 */
+.input-label::before {
+    content: none; /* 点を削除 */
+}
+
+.unit {
+    font-size: 0.8em;
+    opacity: 0.6;
+}
+
+.futuristic-input {
+    width: 100%;
+    max-width: 300px; /* ここで入力フィールドの最大幅を設定 */
+    padding: 14px 18px;
+    background-color: rgba(40, 40, 80, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--primary-color);
+    font-size: 1.1em;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 8px rgba(0, 230, 118, 0.1);
+    appearance: none;
+    /* margin: 0 auto; は不要 (form-groupのalign-items: centerで中央寄せされるため) */
+}
+
+.futuristic-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(0, 230, 118, 0.5), inset 0 0 10px rgba(0, 230, 118, 0.3);
+    background-color: rgba(50, 50, 90, 0.8);
+}
+
+.futuristic-input:not(:placeholder-shown) + .input-label,
+.futuristic-input:focus + .input-label {
+    color: var(--primary-color);
+    opacity: 1;
+}
+
+.futuristic-button {
+    width: 100%;
+    max-width: 350px; /* ボタンの最大幅も設定して統一感を出す */
+    margin: 20px auto 0 auto; /* 中央寄せ */
+    padding: 15px 20px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--background-dark);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.3em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(0, 230, 118, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.futuristic-button i {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.futuristic-button:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 0 30px rgba(0, 230, 118, 0.7), 0 0 40px rgba(0, 176, 255, 0.5);
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+}
+
+.futuristic-button:active {
+    transform: translateY(0);
+    box-shadow: 0 0 10px rgba(0, 230, 118, 0.3);
+}
+
+.result-display {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: rgba(40, 40, 80, 0.8);
+    border: 1px solid var(--primary-color);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    box-shadow: 0 0 25px rgba(0, 230, 118, 0.4);
+    position: relative;
+    overflow: hidden;
+    max-width: 400px; /* 結果表示部分の最大幅も設定 */
+    margin: 40px auto 0 auto; /* 中央寄せ */
+}
+
+.result-display::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 49%, var(--primary-color) 50%, transparent 51%);
+    background-size: 200% 200%;
+    animation: scanLine 8s infinite linear;
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+@keyframes scanLine {
+    0% { background-position: 100% 0%; }
+    100% { background-position: 0% 100%; }
+}
+
+.result-label {
+    font-size: 1.4em;
+    color: var(--text-color-light);
+    margin-right: 15px;
+    opacity: 0.9;
+}
+
+.result-value {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: var(--glow-color);
+    text-shadow: 0 0 15px var(--glow-color), 0 0 25px rgba(0, 255, 140, 0.6);
+    letter-spacing: 1px;
+    transition: transform 0.2s ease;
+}
+
+.result-value.active {
+    transform: scale(1.05);
+}
+
+.form-group:hover .input-label {
+    color: var(--primary-color);
+    text-shadow: 0 0 8px var(--primary-color);
+}
