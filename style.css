@@ -11,24 +11,19 @@
 
 body {
     font-family: var(--font-futuristic);
-    margin: 0;
-    padding: 0;
+    margin: 20px; /* 元のCSSを参考に、bodyに余白を設定 */
+    padding: 0; /* paddingは0のまま */
     background: linear-gradient(135deg, var(--background-dark), var(--background-light));
     color: var(--text-color-light);
     position: relative;
     overflow-x: hidden;
-    padding: 20px;
-    box-sizing: border-box;
-    /* 新規追加: 中央寄せを強化するため、flexboxを使用 */
-    display: flex;
-    justify-content: center; /* 横方向の中央寄せ */
-    align-items: flex-start; /* 縦方向は上から配置（スクロール可能にするため） */
-    min-height: 100vh; /* 少なくともビューポートの高さにする */
+    /* min-heightは不要。marginとcontainerのmax-width/marginでスクロールと中央寄せを管理 */
+    /* display: flexなどは削除し、元のCSSのmargin:autoによる中央寄せを主にする */
 }
 
 body::before {
     content: '';
-    position: fixed;
+    position: fixed; /* 画面に固定 */
     top: 0;
     left: 0;
     width: 100%;
@@ -50,20 +45,17 @@ body::before {
     backdrop-filter: blur(10px);
     border: 1px solid var(--border-color);
     border-radius: 20px;
-    padding: 40px;
+    padding: 40px; /* コンテナ内部のパディング */
     box-shadow: 0 0 30px rgba(0, 230, 118, 0.3), 0 0 60px rgba(0, 176, 255, 0.2);
-    max-width: 600px;
-    /* width: 90%; を変更または削除 */
-    width: calc(100% - 40px); /* 左右のpadding分を考慮し、100%から引く */
-    /* あるいは、シンプルに max-width のみで制御する場合は width: auto; も可 */
-    margin: 0; /* bodyのflexboxで中央寄せするため、不要になる */
+    max-width: 600px; /* コンテナの最大幅 */
+    width: calc(100% - 40px); /* 画面幅からbodyの左右margin (20px*2=40px) を引いた幅 */
+    margin: 0 auto; /* ここで中央寄せ */
     text-align: center;
     position: relative;
     z-index: 1;
-    min-height: auto;
+    min-height: auto; /* コンテンツ量に合わせて高さを調整 */
+    box-sizing: border-box; /* paddingを含めて幅を計算する */
 }
-
-/* その他のCSSは変更なし */
 
 .header {
     margin-bottom: 30px;
@@ -116,27 +108,26 @@ body::before {
 }
 
 .form-group {
-    text-align: center; /* ラベルと入力フィールドを中央寄せにする */
+    text-align: center;
     position: relative;
-    display: flex; /* Flexboxを使ってラベルと入力フィールドを配置 */
-    flex-direction: column; /* 縦方向に並べる */
-    align-items: center; /* 中央に揃える */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .input-label {
     display: block;
-    margin-bottom: 8px; /* ラベルと入力フィールドの間のスペース */
+    margin-bottom: 8px;
     font-size: 0.9em;
     color: var(--text-color-light);
     opacity: 0.7;
     position: relative;
-    padding-left: 0; /* 左寄せの点を削除するため0に */
-    text-align: center; /* ラベル自体も中央寄せ */
+    padding-left: 0;
+    text-align: center;
 }
 
-/* ラベルの左側の小さな点線を削除する場合 */
 .input-label::before {
-    content: none; /* 点を削除 */
+    content: none;
 }
 
 .unit {
@@ -146,7 +137,7 @@ body::before {
 
 .futuristic-input {
     width: 100%;
-    max-width: 300px; /* ここで入力フィールドの最大幅を設定 */
+    max-width: 300px; /* 入力フィールドの最大幅 */
     padding: 14px 18px;
     background-color: rgba(40, 40, 80, 0.6);
     border: 1px solid var(--border-color);
@@ -157,7 +148,6 @@ body::before {
     transition: all 0.3s ease;
     box-shadow: inset 0 0 8px rgba(0, 230, 118, 0.1);
     appearance: none;
-    /* margin: 0 auto; は不要 (form-groupのalign-items: centerで中央寄せされるため) */
 }
 
 .futuristic-input:focus {
@@ -174,8 +164,8 @@ body::before {
 
 .futuristic-button {
     width: 100%;
-    max-width: 350px; /* ボタンの最大幅も設定して統一感を出す */
-    margin: 20px auto 0 auto; /* 中央寄せ */
+    max-width: 350px;
+    margin: 20px auto 0 auto;
     padding: 15px 20px;
     background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
     color: var(--background-dark);
@@ -221,8 +211,9 @@ body::before {
     box-shadow: 0 0 25px rgba(0, 230, 118, 0.4);
     position: relative;
     overflow: hidden;
-    max-width: 400px; /* 結果表示部分の最大幅も設定 */
-    margin: 40px auto 0 auto; /* 中央寄せ */
+    max-width: 400px;
+    margin: 40px auto 0 auto;
+    box-sizing: border-box; /* paddingを含めて幅を計算する */
 }
 
 .result-display::before {
